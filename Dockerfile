@@ -25,7 +25,7 @@ ENV PATH=/home/nacl/depot_tools:"$PATH"
 RUN git config --global user.email "li.he@chinaott.net" \
     && git config --global user.name "lihe" \
 #setup nacl_sdk
-    && cd $WORKDIR \
+    && cd /home/nacl \
     && curl -O "https://storage.googleapis.com/nativeclient-mirror/nacl/nacl_sdk/nacl_sdk.zip" \
     && unzip nacl_sdk.zip \
     && cd nacl_sdk \
@@ -33,10 +33,10 @@ RUN git config --global user.email "li.he@chinaott.net" \
     && ./naclsdk update pepper_49 \
     && rm -rf ../nacl_sdk.zip \
 #setup depot_tools
-    && cd $WORKDIR \
+    && cd /home/nacl \
     && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git \
 #setup webports
-    && cd $WORKDIR \
+    && cd /home/nacl \
     && mkdir webports \
     && cd webports \
     && gclient config --unmanaged --name=src https://chromium.googlesource.com/webports.git \
@@ -46,7 +46,7 @@ RUN git config --global user.email "li.he@chinaott.net" \
     && gclient sync \
     && ls . \
 #build webports
-    && cd $WORKDIR/webports/src \
+    && cd /home/nacl/webports/src \
     && sed -i  "/^TestStep/,/^}/s/^/#/g" ports/glibc-compat/build.sh \
     && sed -i  "/^TestStep/,/^}/s/^/#/g" ports/openssl/build.sh \
     && sed -i  "/^TestStep/,/^}/s/^/#/g" ports/zlib/build.sh \
