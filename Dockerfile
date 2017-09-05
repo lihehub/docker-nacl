@@ -4,8 +4,8 @@ MAINTAINER lihe <liheemail@163.com>
 
 #ARG http_proxy=http://192.168.3.3:1087
 #ARG https_proxy=http://192.168.3.3:1087
-ARG DEPENDENCE_PACKAGE="git unzip make python curl sed bzip2 zlib1g-dev:i386 \
-    libssl-dev:i386 libstdc++6:i386 libglib2.0-0:i386"
+ARG DEPENDENCE_PACKAGE="git unzip make python curl sed bzip2 pkg-config texinfo\
+    zlib1g-dev:i386 libssl-dev:i386 libstdc++6:i386 libglib2.0-0:i386"
 
 RUN dpkg --add-architecture i386 \
     && apt-get update \
